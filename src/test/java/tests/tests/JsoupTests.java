@@ -33,7 +33,7 @@ public class JsoupTests {
         parameter("locale", locale);
         String url = TestData.getWebUrl() + MAIN.getPath(locale);
         Document page = openPage(url);
-        step("Сравниваем ссылку на FB с ", () -> {
+        step("Сравниваем ссылку на FB", (step) -> {
             parameter("expectedUrl", TestData.getMainFooterFb().get(locale));
             parameter("realUrl", TestData.getMainFooterFb().get(locale));
             assertThat(page.select("[title=Facebook]").attr("href"))
