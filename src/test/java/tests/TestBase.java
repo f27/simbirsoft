@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.TestInfo;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static helpers.AttachmentsHelper.*;
@@ -16,7 +15,7 @@ public class TestBase {
     }
 
     @AfterEach
-    void addAttachments(TestInfo info) {
+    void addAttachments() {
         String sessionId = getSessionId();
 
         attachScreenshot("Last screenshot");
