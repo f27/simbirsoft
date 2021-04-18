@@ -27,7 +27,7 @@ public class JsoupTests {
     }
 
     @Feature("Главная страница")
-    @ParameterizedTest(name = "Проверка ссылки на FB с помощью jsoup. Язык {locale}")
+    @ParameterizedTest(name = "Проверка ссылки на FB с помощью jsoup")
     @MethodSource("localesProvider")
     void exampleTest(String locale) throws IOException {
         parameter("locale", locale);
