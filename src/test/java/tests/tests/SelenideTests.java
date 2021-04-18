@@ -25,7 +25,7 @@ public class SelenideTests extends TestBase {
     }
 
     @Feature("Главная страница")
-    @ParameterizedTest(name = "Проверка главной страницы. Язык {0}")
+    @ParameterizedTest
     @MethodSource("localesProvider")
     void mainPageTest(String locale) {
         Map<String, String> expectedData = new HashMap<String, String>() {{
