@@ -13,6 +13,9 @@ public interface TestDataConfig extends Config {
     @Key("web.url")
     String webUrl();
 
+    @Key("site.locales")
+    String[] siteLocales();
+
     @Key("site.main.header")
     String[] siteMainHeader();
 

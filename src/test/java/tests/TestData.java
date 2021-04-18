@@ -12,6 +12,10 @@ public class TestData {
         return testDataConfig.webUrl();
     }
 
+    public static String[] getLocales() {
+        return testDataConfig.siteLocales();
+    }
+
     public static Map<String, String> getMainHeader() {
         String[] dataArray = testDataConfig.siteMainHeader();
         return new HashMap<String, String>() {{

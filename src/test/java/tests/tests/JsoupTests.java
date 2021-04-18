@@ -8,6 +8,7 @@ import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import tests.TestData;
 
@@ -21,10 +22,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Tag("jsoup")
 @DisplayName("Tests with jsoup")
 public class JsoupTests {
+    static String[] localesProvider() {
+        return TestData.getLocales();
+    }
 
     @Feature("Главная страница")
     @ParameterizedTest(name = "Проверка ссылки на FB с помощью jsoup. Язык {0}")
-    @ValueSource(strings = {"ru", "en"})
+    @MethodSource("localesProvider")
     void exampleTest(String locale) throws IOException {
         String url = TestData.getWebUrl() + MAIN.getPath(locale);
         Document page = openPage(url);

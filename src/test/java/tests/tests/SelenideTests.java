@@ -5,6 +5,8 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import tests.TestBase;
 import tests.TestData;
@@ -15,15 +17,20 @@ import tests.pages.PortfolioPage;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 @Owner("f27")
 @Tag("selenide")
 @DisplayName("Tests with selenide")
 public class SelenideTests extends TestBase {
 
+    static String[] localesProvider() {
+        return TestData.getLocales();
+    }
+
     @Feature("Главная страница")
     @ParameterizedTest(name = "Проверка главной страницы. Язык {0}")
-    @ValueSource(strings = {"ru", "en"})
+    @MethodSource("localesProvider")
     void mainPageTest(String locale) {
         Map<String, String> expectedData = new HashMap<String, String>() {{
             put("header", TestData.getMainHeader().get(locale));
@@ -41,7 +48,7 @@ public class SelenideTests extends TestBase {
 
     @Feature("Страница соглашения")
     @ParameterizedTest(name = "Проверка страницы соглашения. Язык {0}")
-    @ValueSource(strings = {"ru", "en"})
+    @MethodSource("localesProvider")
     void agreementPageTest(String locale) {
 
         new AgreementPage().openPage(locale)
@@ -50,7 +57,7 @@ public class SelenideTests extends TestBase {
 
     @Feature("Портфолио")
     @ParameterizedTest(name = "Проверка страницы портфолио. Язык {0}")
-    @ValueSource(strings = {"ru", "en"})
+    @MethodSource("localesProvider")
     void portfolioPageTest(String locale) {
 
         new PortfolioPage().openPage(locale)
@@ -60,7 +67,7 @@ public class SelenideTests extends TestBase {
 
     @Feature("Услуги")
     @ParameterizedTest(name = "Проверка страницы спасти продукт. Язык {0}")
-    @ValueSource(strings = {"ru", "en"})
+    @MethodSource("localesProvider")
     void helpSaveProductPageTest(String locale) {
 
         new HelpPage().openPage(locale)
