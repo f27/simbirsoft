@@ -27,7 +27,7 @@ public class SelenideTests extends TestBase {
     }
 
     @Feature("Главная страница")
-    @ParameterizedTest(name = "Проверка главной страницы. Язык {0}")
+    @ParameterizedTest(name = "Проверка главной страницы. Язык {locale}")
     @MethodSource("localesProvider")
     void mainPageTest(String locale) {
         parameter("locale", locale);
@@ -46,7 +46,7 @@ public class SelenideTests extends TestBase {
     }
 
     @Feature("Страница соглашения")
-    @ParameterizedTest(name = "Проверка страницы соглашения. Язык {0}")
+    @ParameterizedTest(name = "Проверка страницы соглашения. Язык {locale}")
     @MethodSource("localesProvider")
     void agreementPageTest(String locale) {
         parameter("locale", locale);
@@ -56,7 +56,7 @@ public class SelenideTests extends TestBase {
     }
 
     @Feature("Портфолио")
-    @ParameterizedTest(name = "Проверка страницы портфолио. Язык {0}")
+    @ParameterizedTest(name = "Проверка страницы портфолио. Язык {locale}")
     @MethodSource("localesProvider")
     void portfolioPageTest(String locale) {
         parameter("locale", locale);
@@ -67,7 +67,7 @@ public class SelenideTests extends TestBase {
     }
 
     @Feature("Услуги")
-    @ParameterizedTest(name = "Проверка страницы спасти продукт. Язык {0}")
+    @ParameterizedTest(name = "Проверка страницы спасти продукт. Язык {locale}")
     @MethodSource("localesProvider")
     void helpSaveProductPageTest(String locale) {
         parameter("locale", locale);
