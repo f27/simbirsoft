@@ -34,8 +34,8 @@ public class JsoupTests {
         String url = TestData.getWebUrl() + MAIN.getPath(locale);
         Document page = openPage(url);
         step("Сравниваем ссылку на FB", (step) -> {
-            parameter("expectedUrl", TestData.getMainFooterFb().get(locale));
-            parameter("realUrl", TestData.getMainFooterFb().get(locale));
+            step.parameter("expectedUrl", TestData.getMainFooterFb().get(locale));
+            step.parameter("realUrl", TestData.getMainFooterFb().get(locale));
             assertThat(page.select("[title=Facebook]").attr("href"))
                     .isEqualTo(TestData.getMainFooterFb().get(locale));
         });
@@ -43,7 +43,6 @@ public class JsoupTests {
 
     @Step("Открываем страницу {url}")
     private Document openPage(String url) throws IOException {
-        parameter("url", url);
         return Jsoup.connect(url).get();
     }
 
