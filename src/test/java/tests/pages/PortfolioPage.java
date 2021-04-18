@@ -11,8 +11,7 @@ import static endpoints.Endpoints.PORTFOLIO;
 
 public class PortfolioPage {
     private static final SelenideElement
-            javaButton = $("[data-code=java]"),
-            agreementText = $(".about-agreement");
+            javaButton = $("[data-code=java]");
 
     private static final ElementsCollection
             titles = $$(".portfolio__title");
