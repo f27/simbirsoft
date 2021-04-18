@@ -5,9 +5,7 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import tests.TestBase;
 import tests.TestData;
 import tests.pages.AgreementPage;
@@ -17,11 +15,10 @@ import tests.pages.PortfolioPage;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 @Owner("f27")
 @Tag("selenide")
-@DisplayName("Tests with selenide")
+@DisplayName("Тесты с selenide")
 public class SelenideTests extends TestBase {
 
     static String[] localesProvider() {

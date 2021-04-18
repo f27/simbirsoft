@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import tests.TestData;
 
 import java.io.IOException;
@@ -20,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Owner("f27")
 @Tag("jsoup")
-@DisplayName("Tests with jsoup")
+@DisplayName("Тесты с парсером jsoup")
 public class JsoupTests {
     static String[] localesProvider() {
         return TestData.getLocales();
