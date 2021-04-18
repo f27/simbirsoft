@@ -1,5 +1,6 @@
 package tests.tests;
 
+import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Step;
 import org.jsoup.Jsoup;
@@ -21,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Tests with jsoup")
 public class JsoupTests {
 
+    @Feature("Главная страница")
     @ParameterizedTest(name = "Проверка ссылки на FB с помощью jsoup. Язык {0}")
     @ValueSource(strings = {"ru", "en"})
     void exampleTest(String locale) throws IOException {

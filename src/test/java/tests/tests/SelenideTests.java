@@ -1,5 +1,6 @@
 package tests.tests;
 
+import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -20,6 +21,7 @@ import java.util.Map;
 @DisplayName("Tests with selenide")
 public class SelenideTests extends TestBase {
 
+    @Feature("Главная страница")
     @ParameterizedTest(name = "Проверка главной страницы. Язык {0}")
     @ValueSource(strings = {"ru", "en"})
     void mainPageTest(String locale) {
@@ -37,6 +39,7 @@ public class SelenideTests extends TestBase {
                 .checkData(expectedData);
     }
 
+    @Feature("Страница соглашения")
     @ParameterizedTest(name = "Проверка страницы соглашения. Язык {0}")
     @ValueSource(strings = {"ru", "en"})
     void agreementPageTest(String locale) {
@@ -45,6 +48,7 @@ public class SelenideTests extends TestBase {
                 .hasText(TestData.getAgreement().get(locale));
     }
 
+    @Feature("Портфолио")
     @ParameterizedTest(name = "Проверка страницы портфолио. Язык {0}")
     @ValueSource(strings = {"ru", "en"})
     void portfolioPageTest(String locale) {
@@ -54,6 +58,7 @@ public class SelenideTests extends TestBase {
                 .hasText(TestData.getPortfolioTechnologiesJava().get(locale));
     }
 
+    @Feature("Услуги")
     @ParameterizedTest(name = "Проверка страницы спасти продукт. Язык {0}")
     @ValueSource(strings = {"ru", "en"})
     void helpSaveProductPageTest(String locale) {
