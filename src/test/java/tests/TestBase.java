@@ -10,7 +10,7 @@ import static helpers.DriverHelper.*;
 public class TestBase {
 
     @BeforeEach
-    static void setup() {
+    void setup() {
         configureDriver();
     }
 
