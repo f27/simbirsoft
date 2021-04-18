@@ -14,6 +14,7 @@ import tests.TestData;
 import java.io.IOException;
 
 import static endpoints.Endpoints.MAIN;
+import static io.qameta.allure.Allure.parameter;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,6 +30,7 @@ public class JsoupTests {
     @ParameterizedTest(name = "Проверка ссылки на FB с помощью jsoup. Язык {0}")
     @MethodSource("localesProvider")
     void exampleTest(String locale) throws IOException {
+        parameter("locale", locale);
         String url = TestData.getWebUrl() + MAIN.getPath(locale);
         Document page = openPage(url);
         step("Сравниваем ссылку", () ->

@@ -16,6 +16,8 @@ import tests.pages.PortfolioPage;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.qameta.allure.Allure.parameter;
+
 @Owner("f27")
 @Tag("selenide")
 @DisplayName("Тесты с selenide")
@@ -28,6 +30,7 @@ public class SelenideTests extends TestBase {
     @ParameterizedTest(name = "Проверка главной страницы. Язык {0}")
     @MethodSource("localesProvider")
     void mainPageTest(String locale) {
+        parameter("locale", locale);
         Map<String, String> expectedData = new HashMap<String, String>() {{
             put("header", TestData.getMainHeader().get(locale));
             put("phone", TestData.getMainPhone().get(locale));
@@ -46,6 +49,7 @@ public class SelenideTests extends TestBase {
     @ParameterizedTest(name = "Проверка страницы соглашения. Язык {0}")
     @MethodSource("localesProvider")
     void agreementPageTest(String locale) {
+        parameter("locale", locale);
 
         new AgreementPage().openPage(locale)
                 .hasText(TestData.getAgreement().get(locale));
@@ -55,6 +59,7 @@ public class SelenideTests extends TestBase {
     @ParameterizedTest(name = "Проверка страницы портфолио. Язык {0}")
     @MethodSource("localesProvider")
     void portfolioPageTest(String locale) {
+        parameter("locale", locale);
 
         new PortfolioPage().openPage(locale)
                 .chooseJava()
@@ -65,6 +70,7 @@ public class SelenideTests extends TestBase {
     @ParameterizedTest(name = "Проверка страницы спасти продукт. Язык {0}")
     @MethodSource("localesProvider")
     void helpSaveProductPageTest(String locale) {
+        parameter("locale", locale);
 
         new HelpPage().openPage(locale)
                 .hasText(TestData.getHelpSave().get(locale));
