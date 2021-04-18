@@ -54,6 +54,7 @@ public class DriverHelper {
     }
 
     public static String getConsoleLogs() {
+        if (!Configuration.browser.equals("chrome")) return "Only chrome supports browser console logs";
         return String.join("\n", Selenide.getWebDriverLogs(BROWSER));
     }
 
