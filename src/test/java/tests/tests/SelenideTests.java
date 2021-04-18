@@ -20,7 +20,6 @@ import java.util.Map;
 @Tag("selenide")
 @DisplayName("Тесты с selenide")
 public class SelenideTests extends TestBase {
-
     static String[] localesProvider() {
         return TestData.getLocales();
     }
