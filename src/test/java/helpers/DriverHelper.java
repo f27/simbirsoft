@@ -59,7 +59,7 @@ public class DriverHelper {
     }
 
     public static void configureDriver() {
-        addListener("AllureSelenide", new AllureSelenide().enableLogs(LogType.BROWSER, Level.ALL));
+        addListener("AllureSelenide", new AllureSelenide());
 
         Configuration.browser = driverConfig.webBrowser();
         Configuration.browserVersion = driverConfig.webBrowserVersion();
