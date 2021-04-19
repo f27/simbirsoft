@@ -31,6 +31,7 @@ public class SelenideTests extends TestBase {
     @ParameterizedTest(name = "Проверка главной страницы")
     @MethodSource("localesProvider")
     void mainPageTest(String locale) {
+        parameter("locale", locale);
         Map<String, String> expectedData = new HashMap<String, String>() {{
             put("header", TestData.getMainHeader().get(locale));
             put("phone", TestData.getMainPhone().get(locale));
