@@ -16,7 +16,7 @@ public class PortfolioPage {
     private static final ElementsCollection
             titles = $$(".portfolio__title");
 
-    @Step("Открываем страницу портфолио по технологиям)")
+    @Step("Открываем страницу портфолио по технологиям ({locale})")
     public PortfolioPage openPage(String locale) {
         return open(PORTFOLIO.addPath("/technologies", locale), PortfolioPage.class);
     }
