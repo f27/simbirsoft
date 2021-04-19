@@ -4,6 +4,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import tests.TestBase;
@@ -23,61 +24,57 @@ import static io.qameta.allure.Allure.step;
 @Tag("selenide")
 @DisplayName("Тесты с selenide")
 public class SelenideTests extends TestBase {
-    static String[] localesProvider() {
-        return TestData.getLocales();
-    }
 
+    @Test
     @Feature("Главная страница")
-    @ParameterizedTest(name = "Проверка главной страницы")
-    @MethodSource("localesProvider")
-    void mainPageTest(String locale) {
-        parameter("locale", locale);
-        Map<String, String> expectedData = new HashMap<String, String>() {{
-            put("header", TestData.getMainHeader().get(locale));
-            put("phone", TestData.getMainPhone().get(locale));
-            put("footerFb", TestData.getMainFooterFb().get(locale));
-            put("agreementLinkText", TestData.getElementsLinkAgreement().get(locale));
-        }};
-
-        step("Язык " + locale, (step) -> {
-            step.parameter("locale", locale);
-            new MainPage().openPage(locale)
-                    .collectHeader()
-                    .collectPhone()
-                    .collectFbLink()
-                    .collectAgreementLinkText(TestData.getElementsButtonContact().get(locale))
-                    .checkData(expectedData);
-        });
+    void mainPageTest() {
+        for (String locale : TestData.getLocales()) {
+            Map<String, String> expectedData = new HashMap<String, String>() {{
+                put("header", TestData.getMainHeader().get(locale));
+                put("phone", TestData.getMainPhone().get(locale));
+                put("footerFb", TestData.getMainFooterFb().get(locale));
+                put("agreementLinkText", TestData.getElementsLinkAgreement().get(locale));
+            }};
+            step("Проверка главной страницы. Язык " + locale, (step) -> {
+                step.parameter("locale", locale);
+                new MainPage().openPage(locale)
+                        .collectHeader()
+                        .collectPhone()
+                        .collectFbLink()
+                        .collectAgreementLinkText(TestData.getElementsButtonContact().get(locale))
+                        .checkData(expectedData);
+            });
+        }
     }
 
-    @Feature("Страница соглашения")
-    @ParameterizedTest(name = "Проверка страницы соглашения. Язык {0}")
-    @MethodSource("localesProvider")
-    void agreementPageTest(String locale) {
-        parameter("locale", locale);
+    @Test
+    @Feature("Главная страница")
+    void agreementPageTest() {
+        for (String locale : TestData.getLocales()) {
 
-        new AgreementPage().openPage(locale)
-                .hasText(TestData.getAgreement().get(locale));
+            new AgreementPage().openPage(locale)
+                    .hasText(TestData.getAgreement().get(locale));
+        }
     }
 
+    @Test
     @Feature("Портфолио")
-    @ParameterizedTest(name = "Проверка страницы портфолио. Язык {0}")
-    @MethodSource("localesProvider")
-    void portfolioPageTest(String locale) {
-        parameter("locale", locale);
+    void portfolioPageTest() {
+        for (String locale : TestData.getLocales()) {
 
-        new PortfolioPage().openPage(locale)
-                .chooseJava()
-                .hasText(TestData.getPortfolioTechnologiesJava().get(locale));
+            new PortfolioPage().openPage(locale)
+                    .chooseJava()
+                    .hasText(TestData.getPortfolioTechnologiesJava().get(locale));
+        }
     }
 
+    @Test
     @Feature("Услуги")
-    @ParameterizedTest(name = "Проверка страницы спасти продукт. Язык {0}")
-    @MethodSource("localesProvider")
-    void helpSaveProductPageTest(String locale) {
-        parameter("locale", locale);
+    void helpSaveProductPageTest() {
+        for (String locale : TestData.getLocales()) {
 
-        new HelpPage().openPage(locale)
-                .hasText(TestData.getHelpSave().get(locale));
+            new HelpPage().openPage(locale)
+                    .hasText(TestData.getHelpSave().get(locale));
+        }
     }
 }
