@@ -44,6 +44,7 @@ Java, Gradle, JUnit5, jsoup, Selenide, Allure reports, Allure TestOps, Selenoid,
 
 ### Allure TestOps Dashboard
 ![TestOps cases](./readme_files/testops_overview.png)
+
 Здесь видно сколько всего тест-кейсов и сколько из них автоматизированно
 
 ## Уведомление в telegram
