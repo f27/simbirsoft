@@ -5,8 +5,6 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import tests.TestBase;
 import tests.TestData;
 import tests.pages.AgreementPage;
@@ -16,9 +14,6 @@ import tests.pages.PortfolioPage;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static io.qameta.allure.Allure.parameter;
-import static io.qameta.allure.Allure.step;
 
 @Owner("f27")
 @Tag("selenide")
