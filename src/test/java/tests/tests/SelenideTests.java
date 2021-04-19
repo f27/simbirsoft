@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.qameta.allure.Allure.parameter;
+import static io.qameta.allure.Allure.step;
 
 @Owner("f27")
 @Tag("selenide")
@@ -27,22 +28,25 @@ public class SelenideTests extends TestBase {
     }
 
     @Feature("Главная страница")
-    @ParameterizedTest(name = "Проверка главной страницы. Язык {0}")
+    @ParameterizedTest(name = "Проверка главной страницы")
     @MethodSource("localesProvider")
     void mainPageTest(String locale) {
-        parameter("locale", locale);
         Map<String, String> expectedData = new HashMap<String, String>() {{
             put("header", TestData.getMainHeader().get(locale));
             put("phone", TestData.getMainPhone().get(locale));
             put("footerFb", TestData.getMainFooterFb().get(locale));
             put("agreementLinkText", TestData.getElementsLinkAgreement().get(locale));
         }};
-        new MainPage().openPage(locale)
-                .collectHeader()
-                .collectPhone()
-                .collectFbLink()
-                .collectAgreementLinkText(TestData.getElementsButtonContact().get(locale))
-                .checkData(expectedData);
+
+        step("Язык " + locale, (step) -> {
+            step.parameter("locale", locale);
+            new MainPage().openPage(locale)
+                    .collectHeader()
+                    .collectPhone()
+                    .collectFbLink()
+                    .collectAgreementLinkText(TestData.getElementsButtonContact().get(locale))
+                    .checkData(expectedData);
+        });
     }
 
     @Feature("Страница соглашения")
