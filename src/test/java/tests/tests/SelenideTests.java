@@ -27,6 +27,7 @@ public class SelenideTests extends TestBase {
 
     @Test
     @Feature("Главная страница")
+    @DisplayName("Проверка главной страницы")
     void mainPageTest() {
         for (String locale : TestData.getLocales()) {
             Map<String, String> expectedData = new HashMap<String, String>() {{
@@ -35,20 +36,18 @@ public class SelenideTests extends TestBase {
                 put("footerFb", TestData.getMainFooterFb().get(locale));
                 put("agreementLinkText", TestData.getElementsLinkAgreement().get(locale));
             }};
-            step("Проверка главной страницы. Язык " + locale, (step) -> {
-                step.parameter("locale", locale);
-                new MainPage().openPage(locale)
-                        .collectHeader()
-                        .collectPhone()
-                        .collectFbLink()
-                        .collectAgreementLinkText(TestData.getElementsButtonContact().get(locale))
-                        .checkData(expectedData);
-            });
+            new MainPage().openPage(locale)
+                    .collectHeader()
+                    .collectPhone()
+                    .collectFbLink()
+                    .collectAgreementLinkText(TestData.getElementsButtonContact().get(locale))
+                    .checkData(expectedData);
         }
     }
 
     @Test
-    @Feature("Главная страница")
+    @Feature("Страница соглашения")
+    @DisplayName("Проверка главной страницы")
     void agreementPageTest() {
         for (String locale : TestData.getLocales()) {
 
@@ -59,6 +58,7 @@ public class SelenideTests extends TestBase {
 
     @Test
     @Feature("Портфолио")
+    @DisplayName("Проверка портфолио")
     void portfolioPageTest() {
         for (String locale : TestData.getLocales()) {
 
@@ -70,6 +70,7 @@ public class SelenideTests extends TestBase {
 
     @Test
     @Feature("Услуги")
+    @DisplayName("Проверка услуг")
     void helpSaveProductPageTest() {
         for (String locale : TestData.getLocales()) {
 

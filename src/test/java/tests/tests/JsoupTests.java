@@ -7,6 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import tests.TestData;
@@ -26,11 +27,10 @@ public class JsoupTests {
         return TestData.getLocales();
     }
 
+    @Test
     @Feature("Главная страница")
-    @ParameterizedTest(name = "Проверка ссылки на FB с помощью jsoup. Язык {0}")
-    @MethodSource("localesProvider")
+    @DisplayName("Проверка ссылки на FB с помощью jsoup")
     void exampleTest(String locale) throws IOException {
-        parameter("locale", locale);
         String url = TestData.getWebUrl() + MAIN.getPath(locale);
         Document page = openPage(url);
         step("Сравниваем ссылку на FB", (step) -> {
