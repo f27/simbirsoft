@@ -14,7 +14,8 @@ Java, Gradle, JUnit5, jsoup, Selenide, Allure reports, Allure TestOps, Selenoid,
 - Тесты были запущены в параллельном режиме (3 потока)
 - Сгенерирован отчет Allure reports (к тестам, пройденным в Selenoid прикладывается видео)
 - Отчет загружен в Allure TestOps
-- Автоматически созданы тест-кейсы для автоматизированных тестов  
+- Автоматически созданы тест-кейсы для автоматизированных тестов
+- В Allure TestOps добавлен ручной тест для наглядности  
 - Уведомление с отчетом о прохождении тестов отправлено в telegram
 
 # Скриншоты и видео
@@ -40,6 +41,10 @@ Java, Gradle, JUnit5, jsoup, Selenide, Allure reports, Allure TestOps, Selenoid,
 - **id #2373** - Ручной тест-кейс
 
 Все остальные - автоматически созданные после запуска из Jenkins
+
+### Allure TestOps Dashboard
+![TestOps cases](./readme_files/testops_overview.png)
+Здесь видно сколько всего тест-кейсов и сколько из них автоматизированно
 
 ## Уведомление в telegram
 ![telegram](./readme_files/telegram.png)
