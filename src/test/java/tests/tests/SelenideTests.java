@@ -42,7 +42,7 @@ public class SelenideTests extends TestBase {
 
     @Test
     @Feature("Страница соглашения")
-    @DisplayName("Проверка главной страницы")
+    @DisplayName("Проверка страницы соглашения")
     void agreementPageTest() {
         for (String locale : TestData.getLocales()) {
 
